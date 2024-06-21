@@ -283,6 +283,10 @@ function getOverwrittenAppendChildOrInsertBefore(opts: {
           if (typeof refNo === 'number' && refNo !== -1) {
             defineNonEnumerableProperty(stylesheetElement, styleElementRefNodeNo, refNo);
           }
+          // remove dynamic style parent elements
+          if (stylesheetElement && stylesheetElement.parentElement) {
+            stylesheetElement.parentElement.removeChild(stylesheetElement);
+          }
           // record dynamic style elements after insert succeed
           dynamicStyleSheetElements.push(stylesheetElement);
 
